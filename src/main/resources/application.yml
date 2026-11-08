@@ -52,6 +52,12 @@ langchain4j:
 bigmodel:
   api-key: ${BIGMODEL_API_KEY:}
 app:
+  rag:
+    hybrid:
+      enabled: ${RAG_HYBRID_ENABLED:true}
+      vector-candidate-multiplier: ${RAG_VECTOR_CANDIDATE_MULTIPLIER:3}
+      bm25-candidate-multiplier: ${RAG_BM25_CANDIDATE_MULTIPLIER:3}
+      rrf-constant: ${RAG_RRF_CONSTANT:60}
   redis:
     cache-enabled: ${REDIS_CACHE_ENABLED:true}
     document-ttl: ${REDIS_DOCUMENT_TTL:30m}

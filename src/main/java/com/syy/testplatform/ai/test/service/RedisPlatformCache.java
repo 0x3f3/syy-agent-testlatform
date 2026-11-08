@@ -117,7 +117,7 @@ public class RedisPlatformCache {
                 log.debug("Redis RAG cache version unavailable: {}", ex.getMessage());
             }
         }
-        return version + ":" + topK + ":" + sha256(query == null ? "" : query);
+        return "dedup-v1:" + version + ":" + topK + ":" + sha256(query == null ? "" : query);
     }
 
     public record CachedApiDocument(Long id, String name, String title, String version, String serverUrl,

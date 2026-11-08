@@ -22,7 +22,12 @@ class BoundedConcurrentExecutorTest {
                         int running = active.incrementAndGet();
                         maximum.accumulateAndGet(running, Math::max);
                         try {
-                            Thread.sleep(60);
+                            try {
+                                Thread.sleep(60);
+                            } catch (InterruptedException interrupted) {
+                                Thread.currentThread().interrupt();
+                                throw new IllegalStateException("test task interrupted", interrupted);
+                            }
                             if (value == 4) throw new IllegalStateException("simulated case failure");
                             return value * 10;
                         } finally {

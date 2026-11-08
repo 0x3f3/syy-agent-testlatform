@@ -19,7 +19,7 @@ public class TestKnowledgeController {
     @GetMapping("/status")
     public Map<String, Object> status() {
         return Map.of("chunkCount", knowledgeBase.chunkCount(),
-                "storage", "MySQL", "retrieval", "Qwen Embedding + cosine similarity");
+                "storage", "MySQL", "retrieval", knowledgeBase.retrievalDescription());
     }
 
     @PostMapping("/reindex/builtin")
@@ -33,5 +33,12 @@ public class TestKnowledgeController {
     public RagSearchDiagnostics search(@RequestParam String query,
                                        @RequestParam(defaultValue = "5") int topK) {
         return knowledgeBase.searchDebug(query, topK);
+    }
+
+    @Operation(summary = "检测知识库中内容完全重复的 OpenAPI 文档")
+    @GetMapping("/duplicates")
+    public Map<String, Object> duplicates() {
+        var groups = knowledgeBase.detectDuplicateDocuments();
+        return Map.of("duplicateDocumentGroupCount", groups.size(), "groups", groups);
     }
 }
