@@ -1,4 +1,4 @@
-# SYY Agent 智能接口自动化测试平台 · V11 岗位要求完整交付版
+# SYY Agent 智能接口自动化测试平台
 
 基于 Java 21、Spring Boot 3.5、LangChain4j、Qwen、MySQL、Flyway、Redis、Vue 3 和 ECharts 构建。V11 在 V10 的 Agent + RAG 测试链路上补充了 Redis 缓存、异步任务、并发 HTTP 执行、Cron 定时调度和 OpenAPI YAML 解析。
 
