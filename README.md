@@ -218,7 +218,7 @@ Server URL。
 5. 对需要文件的接口（例如 Swagger 上传），在 Swagger UI 中选择文件后点击 Execute。
 
 
-## V11.6 动态 Swagger、RAG 与 Agent 可观测性
+##动态 Swagger、RAG 与 Agent 可观测性
 
 新增动态 Swagger 文档中心：
 
