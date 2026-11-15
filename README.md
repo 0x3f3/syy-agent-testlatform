@@ -1,14 +1,19 @@
 # SYY Agent 智能接口自动化测试平台
 
 基于 Java 21、Spring Boot 3.5、LangChain4j、Qwen、MySQL、Flyway、Redis、Vue 3 和 ECharts 构建。V11 在 V10 的 Agent + RAG 测试链路上补充了 Redis 缓存、异步任务、并发 HTTP 执行、Cron 定时调度和 OpenAPI YAML 解析。
-
+![img_1.png](assets/img_1.png)
+![img.png](assets/img_4.png)
+![img.png](assets/img_5.png)
+![img.png](assets/img_6.png)
+![img.png](assets/img_7.png)
+![img.png](assets/img_8.png)
 > **验收状态说明**：代码包包含单元测试、H2 服务级集成测试，以及一个不 mock MySQL / Redis / Qwen 的真实依赖验收测试。真实依赖验收测试需要用户自己的 MySQL、Redis 和 DashScope 凭据。本制作环境没有 Maven 发行包下载网络、MySQL、Redis 服务或 DashScope Key，因此不能声称真实外部依赖验收已通过；请按“验收测试”章节执行后再标记最终完成。
 
 ## 技术栈
 
 - 后端：Java 21、Spring Boot 3.5、LangChain4j 1.1、Qwen / DashScope
 - 测试能力：OpenAPI 3.x / Swagger 2.0 JSON/YAML、RAG、HTTP Executor、LLM-as-a-Judge、整批 AI 报告
-- 持久化：MySQL、Spring Data JPA、Flyway V1–V3
+- 持久化：MySQL、Spring Data JPA、Flyway
 - 缓存：Redis（接口文档、RAG 检索结果、任务进度；分别配置 TTL）
 - 任务：Spring `@Async` 后台任务池、受限 HTTP 并发池、Spring Cron 定时调度
 - 前端：Vue 3、Vite、ECharts
@@ -56,7 +61,7 @@ npm run dev
 
 前端地址：`http://localhost:5173`。支持 `.json`、`.yaml`、`.yml` 文档上传。
 
-## V11 功能和验收点
+## 功能和验收点
 
 ### 1. Redis 缓存
 
@@ -193,14 +198,13 @@ npm run build
 - MySQL 是业务数据源，Redis 是可丢失缓存；Redis 缓存不可用时不应导致已持久化任务数据丢失。
 
 
-## Swagger UI（V11.5 新增）
-
+## Swagger UI
 后端启动后可直接在浏览器查看和调试本项目 RESTful API：
 
 - Swagger UI：`http://localhost:8081/api/swagger-ui/index.html`
 - 便捷入口：`http://localhost:8081/api/swagger-ui.html`
 - OpenAPI JSON：`http://localhost:8081/api/v3/api-docs`
-
+![img_3.png](assets/img_3.png)
 Swagger UI 已按 Controller 分组，包含 Agent、OpenAPI 文档管理、RAG、
 异步任务、定时调度、测试报告、健康检查等接口。启用
 `DEMO_API_ENABLED=true` 时，也会展示 Demo Shop 示例接口。
@@ -236,4 +240,4 @@ Agent 诊断接口：
 
 - `POST /api/test/documents/{documentId}/generate-cases/diagnostics`
 
-完整测试步骤见 `docs/RAG_AGENT_SWAGGER_ACCEPTANCE.md`。
+
